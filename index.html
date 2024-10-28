@@ -1,0 +1,71 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Web App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-50 font-sans leading-normal tracking-normal">
+    <!-- Header -->
+    <header class="bg-purple-600 text-white py-6 shadow-md">
+      <div class="container mx-auto text-center">
+        <h1 class="text-3xl font-semibold">Welcome to My Web Application</h1>
+        <nav class="mt-4">
+          <ul class="flex justify-center space-x-4">
+            <li>
+              <a class="text-white hover:underline" href="register.php"
+                >Register</a
+              >
+            </li>
+            <li>
+              <a class="text-white hover:underline" href="login.php">Login</a>
+            </li>
+            <?php if (isset($_SESSION['email'])): ?>
+            <li>
+              <a class="text-white hover:underline" href="profile.php"
+                >Profile</a
+              >
+            </li>
+            <?php if ($_SESSION['role'] === 'Admin'): ?>
+            <li>
+              <a class="text-white hover:underline" href="admin_dashboard.php"
+                >Admin Dashboard</a
+              >
+            </li>
+            <?php endif; ?>
+            <li>
+              <a class="text-white hover:underline" href="logout.php">Logout</a>
+            </li>
+            <?php endif; ?>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+      class="container mx-auto my-10 p-6 bg-white rounded-lg shadow-lg shadow-gray-300"
+    >
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">About Us</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Welcome to my web application, designed to showcase robust
+        authentication and authorization mechanisms. Users can easily register,
+        log in, and manage their profiles based on their roles. Experience
+        seamless access and personalized features tailored just for you.
+      </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4 shadow-md shadow-gray-500">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2024 Tinosvitswa Naishe Technologies</p>
+      </div>
+    </footer>
+  </body>
+</html>
